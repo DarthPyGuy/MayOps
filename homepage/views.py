@@ -6,3 +6,6 @@ def home(request):
 
 def blog(request):
     return HttpResponse("<h1>Blog</h1>")
+
+def about(request):
+    return HttpResponse("<h1>About Me</h1>")
