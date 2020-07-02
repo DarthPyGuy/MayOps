@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {% if title %}
-        <title>MayOps - {{ title }}</title>
-    {% else %}
-        <title>MayOps</title>
-    {% endif %}
-</head>
-<body>
+{% extends "homepage/base.html" %}
+{% block content %}
     <h1>MayOps</h1>
-</body>
-</html>
+{% endblock content %}
