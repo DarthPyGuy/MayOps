@@ -1,3 +1,6 @@
+from dotenv import load_dotenv, find_dotenv
+load_dotenv(find_dotenv())
+
 """
 WSGI config for May_Ops project.
 
