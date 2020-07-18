@@ -194,3 +194,14 @@ a:hover {
   font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
   font-weight:900;
 }
+
+.form-control {
+    color: #495057;
+    background-color: #fff;
+
+.about-me-pic{
+  display: block;
+  margin-left: auto;
+  margin-bottom: 16px;
+  width: 50%;
+}
