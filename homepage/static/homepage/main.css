@@ -156,14 +156,14 @@ a {
   /*text-align: center;*/
   color: rgb(227, 48, 90);
   font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
-  font-size:50px;
+  font-size:3.5em;
   font-style:italic;
   font-weight:400;
 }
 
 #MayOpsStyles2{
   font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
-  font-size:33px;
+  font-size:2em;
   font-style:italic;
   font-weight:400;
   color: rgb(146, 140, 134);
