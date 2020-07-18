@@ -1,11 +1,15 @@
 body {
-  background: rgb(96, 85, 88);
+  background: rgb(41, 41, 41);
   color: #333333;
   margin-top: 5rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: rgb(45, 45, 45);
+  color: rgb(227, 48, 90);
+  font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
+  font-size:30px;
+  font-style:italic;
+  font-weight:400;
 }
 
 ul {
@@ -13,7 +17,7 @@ ul {
 }
 
 .bg-steel {
-  background-color: rgb(79, 67, 70);
+  background-color: rgba(227, 48, 90, .1);
 }
 
 .site-header .navbar-nav .nav-link {
@@ -29,7 +33,7 @@ ul {
 }
 
 .content-section {
-  background: rgb(79, 67, 70);
+  background: rgba(227, 48, 90, .1);
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -85,7 +89,10 @@ a.article-title:hover {
 }
 
 .text-muted {
-    color:rgb(146, 140, 134)!important;
+    color: rgb(146, 140, 134)!important;
+    font-weight:700;
+    font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
+    font-weight:900;
 }
 
 
@@ -126,8 +133,8 @@ a.article-title:hover {
 */
 
 .list-group-item-light {
-    color: rgb(45, 45, 45);
-    background-color: rgb(96, 85, 88);
+    color: rgb(146, 140, 134);
+    background-color: rgb(41, 41, 41);
     font-weight:900;
 }
 
@@ -145,10 +152,11 @@ a {
 }
 
 #MayOpsStyles1{
+  color: rgb(227, 48, 90);
   font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
   font-size:50px;
   font-style:italic;
-  font-weight:900;
+  font-weight:400;
 }
 
 #MayOpsStyles2{
@@ -157,4 +165,24 @@ a {
   font-style:italic;
   font-weight:400;
   color: rgb(146, 140, 134);
+}
+
+label {
+  font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
+  font-size:22px;
+  font-style:italic;
+  font-weight:400;
+  color: rgb(146, 140, 134);
+}
+
+legend {
+    font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
+  font-size:22px;
+  font-style:italic;
+  font-weight:400;
+  color: rgb(146, 140, 134);
+}
+
+a:hover {
+    color: rgb(227, 48, 90);
 }
