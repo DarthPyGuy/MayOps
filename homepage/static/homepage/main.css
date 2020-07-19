@@ -7,7 +7,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: rgb(227, 48, 90);
   font-family:adobe-garamond-pro-n4, adobe-garamond-pro, serif;
-  font-size:2.8em;
+  font-size:2em;
   font-style:italic;
   font-weight:400;
 }
@@ -86,7 +86,7 @@ a.article-title:hover {
 }
 
 .account-heading {
-  font-size: 2.5em;
+  font-size: 2.5rem;
 }
 
 .text-muted {
