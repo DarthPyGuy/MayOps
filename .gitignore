@@ -7,6 +7,7 @@ __pycache__*
 *__pycache__
 *.py[cod]
 *$py.class
+sqlite3
 
 # C extensions
 *.so
@@ -141,3 +142,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Data
+db.sqlite3
