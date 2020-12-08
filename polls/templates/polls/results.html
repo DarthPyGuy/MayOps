@@ -1,4 +1,7 @@
+{% extends "homepage/base.html" %}
+{% load static %}
 
+{% block content %}
 
 <h1>{{ question.question_text }}</h1>
 
@@ -9,3 +12,5 @@
 </ul>
 
 <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+
+{% endblock content %}
