@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os, json
+import os
+import json
 
 with open('/etc/config.json') as config_file:
     config = json.load(config_file)
@@ -27,11 +28,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = (os.getenv('DEBUG') == 'True')
 # DEBUG = (os.getenv('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com']
+ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com', '127.0.0.1']
 
 
 # Application definition
@@ -139,7 +140,7 @@ LOGIN_REDIRECT_URL = 'MayOps-home'
 LOGIN_URL = 'login'
 
 EMAIL_USE_TLS = True
-EMAIL_BACKEND =  'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config['EMAIL_HOST_USER']
@@ -153,4 +154,3 @@ AWS_S3_FILE_OVERWRIGHT = False
 AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
