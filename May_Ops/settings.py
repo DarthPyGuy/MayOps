@@ -38,11 +38,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = (os.getenv('DEBUG') == 'True')
 # DEBUG = (os.getenv('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com']
+ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com', '127.0.0.1']
 
 
 # Application definition
