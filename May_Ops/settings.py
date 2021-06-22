@@ -10,10 +10,21 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os, json
+import os
+import json
 
-with open('/etc/config.json') as config_file:
-    config = json.load(config_file)
+if os.environ.get("SECRET_KEY"):
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+else:
+    with open('/etc/config.json') as config_file:
+        config = json.load(config_file)
+        SECRET_KEY = config['SECRET_KEY']
+        EMAIL_HOST_USER = config['EMAIL_HOST_USER']
+        EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
+
+        AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+        AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+        AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,7 +35,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.getenv('SECRET_KEY')
-SECRET_KEY = config['SECRET_KEY']
+# SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -139,18 +150,17 @@ LOGIN_REDIRECT_URL = 'MayOps-home'
 LOGIN_URL = 'login'
 
 EMAIL_USE_TLS = True
-EMAIL_BACKEND =  'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
+# EMAIL_HOST_USER = config['EMAIL_HOST_USER']
+# EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
 
-AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
+# AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+# AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+# AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
 
 AWS_S3_FILE_OVERWRIGHT = False
 AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
