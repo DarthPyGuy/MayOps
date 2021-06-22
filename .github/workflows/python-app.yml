@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: mayopd
+name: mayops
 
 on:
   push:
@@ -33,6 +33,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with django
       with: # Set the secret as an input
-        super_secret: ${{ secrets.SuperSecret }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         python manage.py test -v2
