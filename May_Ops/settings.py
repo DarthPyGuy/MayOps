@@ -13,8 +13,18 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import json
 
-with open('/etc/config.json') as config_file:
-    config = json.load(config_file)
+if os.environ.get("SECRET_KEY"):
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+else:
+    with open('/etc/config.json') as config_file:
+        config = json.load(config_file)
+        SECRET_KEY = config['SECRET_KEY']
+        EMAIL_HOST_USER = config['EMAIL_HOST_USER']
+        EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
+
+        AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+        AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+        AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,14 +35,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.getenv('SECRET_KEY')
-SECRET_KEY = config['SECRET_KEY']
+# SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 # DEBUG = (os.getenv('DEBUG') == 'True')
 # DEBUG = (os.getenv('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com', '127.0.0.1']
+ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com']
 
 
 # Application definition
@@ -85,12 +95,15 @@ WSGI_APPLICATION = 'May_Ops.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        "NAME": os.environ.get("SQL_DATABASE", 'postgres'),
+        "USER": os.environ.get("SQL_USER", "postgres"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "postgres"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -143,12 +156,12 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
+# EMAIL_HOST_USER = config['EMAIL_HOST_USER']
+# EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
 
-AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
-AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
+# AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+# AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+# AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
 
 AWS_S3_FILE_OVERWRIGHT = False
 AWS_DEFAULT_ACL = None
