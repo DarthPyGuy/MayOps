@@ -38,11 +38,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 # DEBUG = (os.getenv('DEBUG') == 'True')
 # DEBUG = (os.getenv('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com', '127.0.0.1']
+ALLOWED_HOSTS = ['104.248.231.107', 'localhost', 'mayops.com']
 
 
 # Application definition
@@ -95,12 +95,15 @@ WSGI_APPLICATION = 'May_Ops.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        'ENGINE': 'django.db.backends.postgresql',
+        "NAME": os.environ.get("SQL_DATABASE", 'postgres'),
+        "USER": os.environ.get("SQL_USER", "postgres"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "postgres"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
