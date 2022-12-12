@@ -140,3 +140,10 @@ dmypy.json
 cython_debug/
 
 */__pycache__/*
+
+
+
+
+
+# mine
+.pre-commit-config.yaml
